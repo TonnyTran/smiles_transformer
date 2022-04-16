@@ -108,7 +108,6 @@ def parse_arguments():
     parser.add_argument('--n_head', type=int, default=4, help='number of attention heads')
     parser.add_argument('--lr', type=float, default=1e-4, help='Adam learning rate')
     parser.add_argument('--gpu', metavar='N', type=int, nargs='+', help='list of GPU IDs to use')
-    parser.add_argument('--cuda', action='store_true', help='use CUDA')
     parser.add_argument('--seed', type=int, default=1111, help='random seed')
     return parser.parse_args()
 
@@ -152,7 +151,7 @@ def main():
     print('Test size:', len(test))
     del train, test
 
-    model = TrfmSeq2seq(len(vocab), args.hidden, len(vocab), args.n_layer).to(device) #cuda()
+    model = TrfmSeq2seq(len(vocab), args.hidden, len(vocab), args.n_layer).cuda()
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
     print(model)
     print('Total parameters:', sum(p.numel() for p in model.parameters()))
@@ -160,7 +159,7 @@ def main():
     best_loss = None
     for e in range(1, args.n_epoch):
         for b, sm in tqdm(enumerate(train_loader)):
-            sm = torch.t(sm.to(device)) # (T,B) #cuda()
+            sm = torch.t(sm.cuda()) # (T,B)
             optimizer.zero_grad()
             output = model(sm) # (T,B,V)
             loss = F.nll_loss(output.view(-1, len(vocab)),

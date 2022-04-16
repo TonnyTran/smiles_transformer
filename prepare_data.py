@@ -13,7 +13,7 @@ def build_corpus(in_path, out_path): # input file: .csv, output file: .txt
             f.write(split(sm)+'\n')
     print('Built a corpus file!')
 
-df = pd.read_table('../data/chembl_24_chemreps.txt')
+df = pd.read_table('dataset/chembl_24_chemreps.txt')
 L = len(df)
 print(L)
 
