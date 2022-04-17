@@ -42,3 +42,5 @@ Run notebook in 3 files corresponding to 3 dataset
 - `exp - HIV.ipynb` - experiment on HIV dataset
 - `exp - BACE.ipynb` - experiment on BACE dataset
 - `exp - BBBP.ipynb` - experiment on BBBP dataset
+
+Note: you can generate directly the classification results using saved pretrained orders. 
