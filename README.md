@@ -3,13 +3,14 @@
 ## Requirements
 This project requires the following libraries.
 - Python3
-- PyTorch > 1.2
-- NumPy
-- Pandas
-- tqdm
-- RDKit
-- matplotlib
-- sklearn
+- PyTorch > 1.2 # pip install torch
+- NumPy # pip install numpy
+- Pandas # pip install pandas
+- tqdm # pip install tqdm
+- RDKit # python -m pip install rdkit-pypi
+- matplotlib # pip install matplotlib
+- sklearn # pip install sklearn
+- jupyter notebook # pip install notebook
 
 ## Dataset
 Dataset for pretrain:
